@@ -1,0 +1,2 @@
+# SegmentPageView
+##SegmentPageView是一个swift开发类型网易新闻左右Tag切换的控件
