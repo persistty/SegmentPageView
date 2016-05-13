@@ -41,6 +41,17 @@ class SegmentBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - 更新LineView的位置
+    func updateLineViewPosition(offset: CGFloat, scrollViewWidth: CGFloat) {
+        lineLeftConstrain.active = false
+        
+        let constant = (offset / scrollViewWidth) * buttonWidth
+        lineLeftConstrain = NSLayoutConstraint(item: lineView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: constant)
+        lineLeftConstrain.active = true
+        
+        lineView.layoutIfNeeded()
+    }
+    
     //MARK: - 设置按钮相关的状态
     private func setButtonStatus(oldIndex: NSInteger, newIndex: NSInteger) {
         let oldButton = viewWithTag(6000 + oldIndex) as! UIButton

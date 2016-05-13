@@ -24,6 +24,13 @@ class ViewController: UIViewController {
         let test3 = Test3ViewController()
         test3.title = "新浪微博"
         
+        //用frame的方式
+        /*let segmentView = SegmentPageView(viewControllers: [test1, test2, test3], currentVc: self)
+        segmentView.frame = CGRect(x: 0, y: 20, width: view.bounds.size.width, height: view.bounds.size.height - 20)
+        view.addSubview(segmentView)
+        segmentView.selectedIndex = 0*/
+        
+        //用AutoLayout的方式
         let segmentView = SegmentPageView(viewControllers: [test1, test2, test3], currentVc: self)
         segmentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentView)

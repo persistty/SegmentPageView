@@ -119,4 +119,7 @@ extension SegmentPageView: UIScrollViewDelegate {
         segmentBar.selectedIndex = index
         selectedIndex = index
     }
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        segmentBar.updateLineViewPosition(scrollView.contentOffset.x, scrollViewWidth: scrollView.bounds.size.width)
+    }
 }
