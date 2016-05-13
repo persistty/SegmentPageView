@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "SegmentPageView"
-        view.backgroundColor = UIColor(hexColor: 0xefeff4)
+        view.backgroundColor = UIColor.whiteColor()
         
         let test1 = Test1ViewController()
         test1.title = "新闻娱乐"

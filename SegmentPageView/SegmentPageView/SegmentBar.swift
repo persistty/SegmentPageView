@@ -20,7 +20,7 @@ class SegmentBar: UIView {
     private lazy var lineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hexColor: 0x007de3)
+        view.backgroundColor = UIColor.blueColor()
         return view
     }()
     
@@ -124,8 +124,8 @@ class SegmentBar: UIView {
     private func createButton(title: String) -> UIButton {
         let btn = UIButton(type: UIButtonType.Custom)
         btn.setTitle(title, forState: UIControlState.Normal)
-        btn.setTitleColor(UIColor(hexColor: 0xbebebe), forState: UIControlState.Normal)
-        btn.setTitleColor(UIColor(hexColor: 0x222222), forState: UIControlState.Selected)
+        btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Selected)
         btn.titleLabel!.font = UIFont.systemFontOfSize(15)
         btn.backgroundColor = UIColor.clearColor()
         btn.translatesAutoresizingMaskIntoConstraints = false

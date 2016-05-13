@@ -16,7 +16,6 @@
 		88E59E401CE56F530095B1B0 /* SegmentPageViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E3F1CE56F530095B1B0 /* SegmentPageViewUITests.swift */; };
 		88E59E511CE573180095B1B0 /* SegmentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E4E1CE573180095B1B0 /* SegmentBar.swift */; };
 		88E59E521CE573180095B1B0 /* SegmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E4F1CE573180095B1B0 /* SegmentPageView.swift */; };
-		88E59E531CE573180095B1B0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E501CE573180095B1B0 /* UIColor+Extension.swift */; };
 		88E59E5B1CE573200095B1B0 /* Test1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E551CE573200095B1B0 /* Test1ViewController.swift */; };
 		88E59E5C1CE573200095B1B0 /* Test1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E59E561CE573200095B1B0 /* Test1ViewController.xib */; };
 		88E59E5D1CE573200095B1B0 /* Test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E571CE573200095B1B0 /* Test2ViewController.swift */; };
@@ -58,7 +57,6 @@
 		88E59E411CE56F530095B1B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88E59E4E1CE573180095B1B0 /* SegmentBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentBar.swift; sourceTree = "<group>"; };
 		88E59E4F1CE573180095B1B0 /* SegmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentPageView.swift; sourceTree = "<group>"; };
-		88E59E501CE573180095B1B0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		88E59E551CE573200095B1B0 /* Test1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test1ViewController.swift; sourceTree = "<group>"; };
 		88E59E561CE573200095B1B0 /* Test1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test1ViewController.xib; sourceTree = "<group>"; };
 		88E59E571CE573200095B1B0 /* Test2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test2ViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			children = (
 				88E59E4E1CE573180095B1B0 /* SegmentBar.swift */,
 				88E59E4F1CE573180095B1B0 /* SegmentPageView.swift */,
-				88E59E501CE573180095B1B0 /* UIColor+Extension.swift */,
 			);
 			path = SegmentPageView;
 			sourceTree = "<group>";
@@ -309,7 +306,6 @@
 				88E59E201CE56F530095B1B0 /* AppDelegate.swift in Sources */,
 				88E59E521CE573180095B1B0 /* SegmentPageView.swift in Sources */,
 				88E59E5F1CE573200095B1B0 /* Test3ViewController.swift in Sources */,
-				88E59E531CE573180095B1B0 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
