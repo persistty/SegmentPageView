@@ -15,13 +15,13 @@ class ViewController: UIViewController {
         title = "SegmentPageView"
         view.backgroundColor = UIColor.whiteColor()
         
-        let test1 = Test1ViewController()
+        let test1 = Test1ViewController(nibName: "Test1ViewController", bundle: NSBundle.mainBundle())
         test1.title = "新闻娱乐"
         
-        let test2 = Test2ViewController()
+        let test2 = Test2ViewController(nibName: "Test2ViewController", bundle: NSBundle.mainBundle())
         test2.title = "消息中心"
         
-        let test3 = Test3ViewController()
+        let test3 = Test3ViewController(nibName: "Test3ViewController", bundle: NSBundle.mainBundle())
         test3.title = "新浪微博"
         
         //用frame的方式
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         segmentView.selectedIndex = 0*/
         
         //用AutoLayout的方式
-        let segmentView = SegmentPageView(viewControllers: [test1, test2, test3], currentVc: self)
+        let segmentView = SegmentPageView(currentVc: self)
         segmentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentView)
         
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         let vConstraintArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[segmentView]-0-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: ["segmentView": segmentView])
         NSLayoutConstraint.activateConstraints(vConstraintArray)
         
-        segmentView.selectedIndex = 0
+        segmentView.viewControllers = [test1, test2, test3]
     }
 }
 

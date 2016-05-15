@@ -10,35 +10,43 @@ import UIKit
 
 private struct InnerConst {
     static let SegmentHeight: CGFloat = 50
-    ///分隔线的高度
-    static let LineHeight: CGFloat = 1
 }
 class SegmentBar: UIView {
     private var selectButton: UIButton?
     private var buttonWidth: CGFloat = 0
     private var lineLeftConstrain: NSLayoutConstraint!
-    private lazy var lineView: UIView = {
+    private var lineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.blueColor()
         return view
     }()
     
+    ///按钮的背景颜色
+    var buttonBgColor = UIColor.clearColor()
+    ///按钮正常状态的文字颜色
+    var buttonTitleNormalColor = UIColor.blackColor()
+    ///按钮选中状态的文字颜色
+    var buttonTitleSelectedColor = UIColor.blueColor()
+    ///按钮文字的字体
+    var buttonTitleFont = UIFont.systemFontOfSize(15)
+    ///线的颜色
+    var lineColor = UIColor.blueColor()
+    ///线的高度
+    var lineHeight: CGFloat = 1
+    
+    
+    var titles = [String]() {
+        didSet {
+            setUI(titles)
+        }
+    }
     var selectTagCallBack: ((index: NSInteger) -> Void)?
     ///当前选择的Index
     var selectedIndex: NSInteger = 0 {
         didSet {
             setButtonStatus(oldValue, newIndex: selectedIndex)
         }
-    }
-    
-    init(titles: [String]) {
-        super.init(frame: CGRectZero)
-        setUI(titles)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - 更新LineView的位置
@@ -58,19 +66,9 @@ class SegmentBar: UIView {
         let newButton = viewWithTag(6000 + newIndex) as! UIButton
         oldButton.selected = false
         newButton.selected = true
-        
-        if oldIndex != newIndex {
-            lineLeftConstrain.active = false
-            
-            lineLeftConstrain = NSLayoutConstraint(item: lineView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: buttonWidth * CGFloat(newIndex))
-            lineLeftConstrain.active = true
-            
-            lineView.layoutIfNeeded()
-        }
     }
     
     private func setUI(titles: [String]) {
-        backgroundColor = UIColor.whiteColor()
         var lastView: UIButton?
         buttonWidth = UIScreen.mainScreen().bounds.size.width / CGFloat(titles.count)
         for title in titles {
@@ -106,6 +104,7 @@ class SegmentBar: UIView {
             lastView = btn
         }
         
+        lineView.backgroundColor = lineColor
         addSubview(lineView)
         let buttomConstraint = NSLayoutConstraint(item: lineView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
         buttomConstraint.active = true
@@ -117,7 +116,7 @@ class SegmentBar: UIView {
         widthConstrain.active = true
         
         //setting height
-        let heightConstraint = NSLayoutConstraint(item: lineView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: InnerConst.LineHeight)
+        let heightConstraint = NSLayoutConstraint(item: lineView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: lineHeight)
         heightConstraint.active = true
         
         selectedIndex = 0
@@ -135,10 +134,10 @@ class SegmentBar: UIView {
     private func createButton(title: String) -> UIButton {
         let btn = UIButton(type: UIButtonType.Custom)
         btn.setTitle(title, forState: UIControlState.Normal)
-        btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Selected)
-        btn.titleLabel!.font = UIFont.systemFontOfSize(15)
-        btn.backgroundColor = UIColor.clearColor()
+        btn.setTitleColor(buttonTitleNormalColor, forState: UIControlState.Normal)
+        btn.setTitleColor(buttonTitleSelectedColor, forState: UIControlState.Selected)
+        btn.titleLabel!.font = buttonTitleFont
+        btn.backgroundColor = buttonBgColor
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }

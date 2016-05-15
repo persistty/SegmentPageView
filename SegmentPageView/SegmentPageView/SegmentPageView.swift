@@ -9,21 +9,41 @@
 import UIKit
 
 class SegmentPageView: UIView {
-    private var viewControllers: [UIViewController]!
-    private var segmentBar: SegmentBar!
+    private weak var currentVc: UIViewController!
     
-    ///选择的tag的index
-    var selectedIndex: NSInteger = 0 {
+    ///分段导航条
+    private(set) var segmentBar: SegmentBar = {
+        let segmentBar = SegmentBar()
+        segmentBar.backgroundColor = UIColor.whiteColor()
+        segmentBar.translatesAutoresizingMaskIntoConstraints = false
+        return segmentBar
+    }()
+    private(set) var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.pagingEnabled = true
+        scrollView.bounces = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    ///显示控制器的数组
+    var viewControllers = [UIViewController]() {
         didSet {
-            choiseView(selectedIndex)
+            makeUI(currentVc)
         }
     }
-    private(set) var scrollView: UIScrollView = UIScrollView()
+    ///选择的tag的index
+    private var selectedIndex: NSInteger = 0 {
+        didSet {
+            choiseView(selectedIndex)
+            choiseTag(selectedIndex)
+        }
+    }
     
-    init(viewControllers: [UIViewController], currentVc: UIViewController) {
-        self.viewControllers = viewControllers
+    init(currentVc: UIViewController) {
         super.init(frame: CGRectZero)
-        makeUI(currentVc)
+        self.currentVc = currentVc
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,11 +58,9 @@ class SegmentPageView: UIView {
             currentVc.addChildViewController(vc)
         }
         
-        segmentBar = SegmentBar(titles: titles)
-        segmentBar.translatesAutoresizingMaskIntoConstraints = false
+        segmentBar.titles = titles
         segmentBar.selectTagCallBack = { [weak self] index in
             self?.selectedIndex = index
-            self?.choiseTag(index)
         }
         addSubview(segmentBar)
         let topConstraint = NSLayoutConstraint(item: segmentBar, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
@@ -57,11 +75,7 @@ class SegmentPageView: UIView {
         let heightConstrain = NSLayoutConstraint(item: segmentBar, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 40)
         heightConstrain.active = true
         
-        scrollView.pagingEnabled = true
-        scrollView.bounces = false
-        scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegate = self
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(scrollView)
         
         let topConstraint2 = NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: segmentBar, attribute: .Bottom, multiplier: 1, constant: 0)
@@ -75,6 +89,8 @@ class SegmentPageView: UIView {
         
         let buttomConstraint = NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
         buttomConstraint.active = true
+        
+        selectedIndex = 0
     }
     
     private func choiseView(index: NSInteger) {
