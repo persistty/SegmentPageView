@@ -8,40 +8,47 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+    
+    static let CellIdentifier = "TableViewCell"
+    var dataArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "SegmentPageView"
-        view.backgroundColor = UIColor.whiteColor()
         
-        let test1 = Test1ViewController(nibName: "Test1ViewController", bundle: NSBundle.mainBundle())
-        test1.title = "新闻娱乐"
+        title = "TableView"
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ViewController.CellIdentifier)
         
-        let test2 = Test2ViewController(nibName: "Test2ViewController", bundle: NSBundle.mainBundle())
-        test2.title = "消息中心"
+        dataArray.append("使用AutoLayout的方式")
+        dataArray.append("使用Frame的方式")
+        dataArray.append("自定义操作条")
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataArray.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(ViewController.CellIdentifier, forIndexPath: indexPath)
+        cell.textLabel?.text = dataArray[indexPath.row]
+        return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let test3 = Test3ViewController(nibName: "Test3ViewController", bundle: NSBundle.mainBundle())
-        test3.title = "新浪微博"
+        let vc: UIViewController
+        switch indexPath.row {
+        case 0:
+            vc = AutoLayoutViewController(nibName: "AutoLayoutViewController", bundle: NSBundle.mainBundle())
+        case 1:
+            vc = FrameViewController(nibName: "FrameViewController", bundle: NSBundle.mainBundle())
+        case 2:
+            vc = CustomBarViewController(nibName: "CustomBarViewController", bundle: NSBundle.mainBundle())
+        default:
+            vc = AutoLayoutViewController(nibName: "AutoLayoutViewController", bundle: NSBundle.mainBundle())
+        }
         
-        //用frame的方式
-        /*let segmentView = SegmentPageView(viewControllers: [test1, test2, test3], currentVc: self)
-        segmentView.frame = CGRect(x: 0, y: 20, width: view.bounds.size.width, height: view.bounds.size.height - 20)
-        view.addSubview(segmentView)
-        segmentView.selectedIndex = 0*/
-        
-        //用AutoLayout的方式
-        let segmentView = SegmentPageView(currentVc: self)
-        segmentView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(segmentView)
-        
-        let hConstraintArray = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[segmentView]-0-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: ["segmentView": segmentView])
-        NSLayoutConstraint.activateConstraints(hConstraintArray)
-        
-        let vConstraintArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[segmentView]-0-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: ["segmentView": segmentView])
-        NSLayoutConstraint.activateConstraints(vConstraintArray)
-        
-        segmentView.viewControllers = [test1, test2, test3]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

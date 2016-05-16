@@ -22,6 +22,12 @@
 		88E59E5E1CE573200095B1B0 /* Test2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E59E581CE573200095B1B0 /* Test2ViewController.xib */; };
 		88E59E5F1CE573200095B1B0 /* Test3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E59E591CE573200095B1B0 /* Test3ViewController.swift */; };
 		88E59E601CE573200095B1B0 /* Test3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88E59E5A1CE573200095B1B0 /* Test3ViewController.xib */; };
+		88F79DDD1CE965C50087BD4F /* AutoLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F79DDB1CE965C50087BD4F /* AutoLayoutViewController.swift */; };
+		88F79DDE1CE965C50087BD4F /* AutoLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DDC1CE965C50087BD4F /* AutoLayoutViewController.xib */; };
+		88F79DE11CE9661D0087BD4F /* FrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F79DDF1CE9661D0087BD4F /* FrameViewController.swift */; };
+		88F79DE21CE9661D0087BD4F /* FrameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE01CE9661D0087BD4F /* FrameViewController.xib */; };
+		88F79DE51CE971200087BD4F /* CustomBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F79DE31CE971200087BD4F /* CustomBarViewController.swift */; };
+		88F79DE61CE971200087BD4F /* CustomBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE41CE971200087BD4F /* CustomBarViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +69,12 @@
 		88E59E581CE573200095B1B0 /* Test2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2ViewController.xib; sourceTree = "<group>"; };
 		88E59E591CE573200095B1B0 /* Test3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test3ViewController.swift; sourceTree = "<group>"; };
 		88E59E5A1CE573200095B1B0 /* Test3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test3ViewController.xib; sourceTree = "<group>"; };
+		88F79DDB1CE965C50087BD4F /* AutoLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewController.swift; sourceTree = "<group>"; };
+		88F79DDC1CE965C50087BD4F /* AutoLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoLayoutViewController.xib; sourceTree = "<group>"; };
+		88F79DDF1CE9661D0087BD4F /* FrameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameViewController.swift; sourceTree = "<group>"; };
+		88F79DE01CE9661D0087BD4F /* FrameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameViewController.xib; sourceTree = "<group>"; };
+		88F79DE31CE971200087BD4F /* CustomBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarViewController.swift; sourceTree = "<group>"; };
+		88F79DE41CE971200087BD4F /* CustomBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBarViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +173,12 @@
 				88E59E581CE573200095B1B0 /* Test2ViewController.xib */,
 				88E59E591CE573200095B1B0 /* Test3ViewController.swift */,
 				88E59E5A1CE573200095B1B0 /* Test3ViewController.xib */,
+				88F79DDB1CE965C50087BD4F /* AutoLayoutViewController.swift */,
+				88F79DDC1CE965C50087BD4F /* AutoLayoutViewController.xib */,
+				88F79DDF1CE9661D0087BD4F /* FrameViewController.swift */,
+				88F79DE01CE9661D0087BD4F /* FrameViewController.xib */,
+				88F79DE31CE971200087BD4F /* CustomBarViewController.swift */,
+				88F79DE41CE971200087BD4F /* CustomBarViewController.xib */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -269,10 +287,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F79DE61CE971200087BD4F /* CustomBarViewController.xib in Resources */,
 				88E59E5E1CE573200095B1B0 /* Test2ViewController.xib in Resources */,
 				88E59E5C1CE573200095B1B0 /* Test1ViewController.xib in Resources */,
+				88F79DE21CE9661D0087BD4F /* FrameViewController.xib in Resources */,
 				88E59E2A1CE56F530095B1B0 /* LaunchScreen.storyboard in Resources */,
 				88E59E271CE56F530095B1B0 /* Assets.xcassets in Resources */,
+				88F79DDE1CE965C50087BD4F /* AutoLayoutViewController.xib in Resources */,
 				88E59E601CE573200095B1B0 /* Test3ViewController.xib in Resources */,
 				88E59E251CE56F530095B1B0 /* Main.storyboard in Resources */,
 			);
@@ -302,10 +323,13 @@
 				88E59E5B1CE573200095B1B0 /* Test1ViewController.swift in Sources */,
 				88E59E5D1CE573200095B1B0 /* Test2ViewController.swift in Sources */,
 				88E59E511CE573180095B1B0 /* SegmentBar.swift in Sources */,
+				88F79DE11CE9661D0087BD4F /* FrameViewController.swift in Sources */,
 				88E59E221CE56F530095B1B0 /* ViewController.swift in Sources */,
 				88E59E201CE56F530095B1B0 /* AppDelegate.swift in Sources */,
 				88E59E521CE573180095B1B0 /* SegmentPageView.swift in Sources */,
+				88F79DE51CE971200087BD4F /* CustomBarViewController.swift in Sources */,
 				88E59E5F1CE573200095B1B0 /* Test3ViewController.swift in Sources */,
+				88F79DDD1CE965C50087BD4F /* AutoLayoutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
