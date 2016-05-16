@@ -40,7 +40,7 @@ NSLayoutConstraint.activateConstraints(vConstraintArray)
         
 segmentView.viewControllers = [test1, test2, test3]
 ```
-2.用用Frame的方式
+2.用Frame的方式
 ```
 let segmentView = SegmentPageView(currentVc: self)
 segmentView.frame = CGRect(x: 0, y: 64, width: view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - 64)
