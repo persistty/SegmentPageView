@@ -13,5 +13,5 @@ SegmentPageView是一个swift开发类型网易新闻左右Tag切换的控件
 * Xcode 7.0+
 
 ##Usage
-直接把SegmentPageView文件夹拖到项目里面就可以<\br>
+直接把SegmentPageView文件夹拖到项目里面就可以<br/>
 ![](https://github.com/persistty/SegmentPageView/blob/master/SegmentPageView/gif.gif)
