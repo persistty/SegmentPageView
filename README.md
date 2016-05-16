@@ -4,9 +4,9 @@ SegmentPageView是一个swift开发类型网易新闻左右Tag切换的控件
 
 ##Features
 ###
-* 用AutoLayout的方式
-* 用Frame的方式
-* 自定义控件
+- [x] 用AutoLayout的方式
+- [x] 用Frame的方式
+- [x] 自定义控件
 
 ##Requirements
 * iOS 8.0+
