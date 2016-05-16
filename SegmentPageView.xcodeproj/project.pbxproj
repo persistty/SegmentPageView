@@ -28,6 +28,7 @@
 		88F79DE21CE9661D0087BD4F /* FrameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE01CE9661D0087BD4F /* FrameViewController.xib */; };
 		88F79DE51CE971200087BD4F /* CustomBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F79DE31CE971200087BD4F /* CustomBarViewController.swift */; };
 		88F79DE61CE971200087BD4F /* CustomBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE41CE971200087BD4F /* CustomBarViewController.xib */; };
+		88F79DE81CE9A2880087BD4F /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE71CE9A2880087BD4F /* gif.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		88F79DE01CE9661D0087BD4F /* FrameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameViewController.xib; sourceTree = "<group>"; };
 		88F79DE31CE971200087BD4F /* CustomBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarViewController.swift; sourceTree = "<group>"; };
 		88F79DE41CE971200087BD4F /* CustomBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBarViewController.xib; sourceTree = "<group>"; };
+		88F79DE71CE9A2880087BD4F /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				88E59E231CE56F530095B1B0 /* Main.storyboard */,
 				88E59E261CE56F530095B1B0 /* Assets.xcassets */,
 				88E59E281CE56F530095B1B0 /* LaunchScreen.storyboard */,
+				88F79DE71CE9A2880087BD4F /* gif.gif */,
 				88E59E2B1CE56F530095B1B0 /* Info.plist */,
 			);
 			path = SegmentPageView;
@@ -296,6 +299,7 @@
 				88F79DDE1CE965C50087BD4F /* AutoLayoutViewController.xib in Resources */,
 				88E59E601CE573200095B1B0 /* Test3ViewController.xib in Resources */,
 				88E59E251CE56F530095B1B0 /* Main.storyboard in Resources */,
+				88F79DE81CE9A2880087BD4F /* gif.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
