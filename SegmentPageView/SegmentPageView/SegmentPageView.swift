@@ -9,16 +9,16 @@
 import UIKit
 
 class SegmentPageView: UIView {
-    fileprivate weak var currentVc: UIViewController!
+    private weak var currentVc: UIViewController!
     
     ///分段导航条
-    fileprivate(set) var segmentBar: SegmentBar = {
+    private(set) var segmentBar: SegmentBar = {
         let segmentBar = SegmentBar()
         segmentBar.backgroundColor = UIColor.white
         segmentBar.translatesAutoresizingMaskIntoConstraints = false
         return segmentBar
     }()
-    fileprivate(set) var scrollView: UIScrollView = {
+    private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
@@ -36,8 +36,8 @@ class SegmentPageView: UIView {
     ///选择的tag的index
     fileprivate var selectedIndex: NSInteger = 0 {
         didSet {
-            choiseView(selectedIndex)
-            choiseTag(selectedIndex)
+            choiseView(index: selectedIndex)
+            choiseTag(index: selectedIndex)
         }
     }
     
@@ -51,7 +51,7 @@ class SegmentPageView: UIView {
     }
     
     //MARK: - 布局界面
-    fileprivate func makeUI(_ currentVc: UIViewController) {
+    private func makeUI(_ currentVc: UIViewController) {
         var titles: [String] = [String]()
         for vc in viewControllers {
             titles.append(vc.title!)
@@ -93,16 +93,16 @@ class SegmentPageView: UIView {
         selectedIndex = 0
     }
     
-    fileprivate func choiseView(_ index: NSInteger) {
+    private func choiseView(index: NSInteger) {
         let vc = viewControllers[index]
-        let vcView = vc.view
+        let vcView = vc.view!
         
         if scrollView.viewWithTag(6500 + index) != nil {
             return
         }
-        vcView?.tag = 6500 + index
-        vcView?.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(vcView!)
+        vcView.tag = 6500 + index
+        vcView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(vcView)
         
         let topConstraint = NSLayoutConstraint(item: vcView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: 0)
         topConstraint.isActive = true
@@ -118,7 +118,7 @@ class SegmentPageView: UIView {
     }
     
     ///切换tag
-    fileprivate func choiseTag(_ index: NSInteger) {
+    private func choiseTag(index: NSInteger) {
         scrollView.setContentOffset(CGPoint(x: scrollView.bounds.size.width * CGFloat(index), y: 0), animated: true)
     }
     
@@ -136,6 +136,6 @@ extension SegmentPageView: UIScrollViewDelegate {
         selectedIndex = index
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        segmentBar.updateLineViewPosition(scrollView.contentOffset.x, scrollViewWidth: scrollView.bounds.size.width)
+        segmentBar.updateLineViewPosition(offset: scrollView.contentOffset.x, scrollViewWidth: scrollView.bounds.size.width)
     }
 }

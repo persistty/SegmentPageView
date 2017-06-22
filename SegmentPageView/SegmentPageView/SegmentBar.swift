@@ -12,10 +12,10 @@ private struct InnerConst {
     static let SegmentHeight: CGFloat = 50
 }
 class SegmentBar: UIView {
-    fileprivate var selectButton: UIButton?
-    fileprivate var buttonWidth: CGFloat = 0
-    fileprivate var lineLeftConstrain: NSLayoutConstraint!
-    fileprivate var lineView: UIView = {
+    private var selectButton: UIButton?
+    private var buttonWidth: CGFloat = 0
+    private var lineLeftConstrain: NSLayoutConstraint!
+    private var lineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.blue
@@ -38,19 +38,19 @@ class SegmentBar: UIView {
     
     var titles = [String]() {
         didSet {
-            setUI(titles)
+            setUI(titles: titles)
         }
     }
-    var selectTagCallBack: ((_ index: NSInteger) -> Void)?
+    var selectTagCallBack: ((NSInteger) -> Void)?
     ///当前选择的Index
     var selectedIndex: NSInteger = 0 {
         didSet {
-            setButtonStatus(oldValue, newIndex: selectedIndex)
+            setButtonStatus(oldIndex: oldValue, newIndex: selectedIndex)
         }
     }
     
     //MARK: - 更新LineView的位置
-    func updateLineViewPosition(_ offset: CGFloat, scrollViewWidth: CGFloat) {
+    func updateLineViewPosition(offset: CGFloat, scrollViewWidth: CGFloat) {
         lineLeftConstrain.isActive = false
         
         let constant = (offset / scrollViewWidth) * buttonWidth
@@ -61,20 +61,20 @@ class SegmentBar: UIView {
     }
     
     //MARK: - 设置按钮相关的状态
-    fileprivate func setButtonStatus(_ oldIndex: NSInteger, newIndex: NSInteger) {
+    private func setButtonStatus(oldIndex: NSInteger, newIndex: NSInteger) {
         let oldButton = viewWithTag(6000 + oldIndex) as! UIButton
         let newButton = viewWithTag(6000 + newIndex) as! UIButton
         oldButton.isSelected = false
         newButton.isSelected = true
     }
     
-    fileprivate func setUI(_ titles: [String]) {
+    private func setUI(titles: [String]) {
         var lastView: UIButton?
         buttonWidth = UIScreen.main.bounds.size.width / CGFloat(titles.count)
         for title in titles {
             let btn = createButton(title)
             btn.tag = 6000 + subviews.count
-            btn.addTarget(self, action: #selector(btnClick(_:)), for: UIControlEvents.touchUpInside)
+            btn.addTarget(self, action: #selector(btnClick(btn:)), for: UIControlEvents.touchUpInside)
             addSubview(btn)
             if subviews.count == 1 {
                 selectButton = btn
@@ -122,7 +122,7 @@ class SegmentBar: UIView {
         selectedIndex = 0
     }
     
-    func btnClick(_ btn: UIButton) {
+    func btnClick(btn: UIButton) {
         selectedIndex = btn.tag - 6000
         
         if let callBack = selectTagCallBack {
@@ -131,7 +131,7 @@ class SegmentBar: UIView {
     }
     
     //MARK: - 通过title快速创建按钮
-    fileprivate func createButton(_ title: String) -> UIButton {
+    private func createButton(_ title: String) -> UIButton {
         let btn = UIButton(type: UIButtonType.custom)
         btn.setTitle(title, for: UIControlState())
         btn.setTitleColor(buttonTitleNormalColor, for: UIControlState())
