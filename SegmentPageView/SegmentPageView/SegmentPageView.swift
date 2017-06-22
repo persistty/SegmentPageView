@@ -9,18 +9,18 @@
 import UIKit
 
 class SegmentPageView: UIView {
-    private weak var currentVc: UIViewController!
+    fileprivate weak var currentVc: UIViewController!
     
     ///分段导航条
-    private(set) var segmentBar: SegmentBar = {
+    fileprivate(set) var segmentBar: SegmentBar = {
         let segmentBar = SegmentBar()
-        segmentBar.backgroundColor = UIColor.whiteColor()
+        segmentBar.backgroundColor = UIColor.white
         segmentBar.translatesAutoresizingMaskIntoConstraints = false
         return segmentBar
     }()
-    private(set) var scrollView: UIScrollView = {
+    fileprivate(set) var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.pagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +34,7 @@ class SegmentPageView: UIView {
         }
     }
     ///选择的tag的index
-    private var selectedIndex: NSInteger = 0 {
+    fileprivate var selectedIndex: NSInteger = 0 {
         didSet {
             choiseView(selectedIndex)
             choiseTag(selectedIndex)
@@ -42,7 +42,7 @@ class SegmentPageView: UIView {
     }
     
     init(currentVc: UIViewController) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.currentVc = currentVc
     }
     
@@ -51,7 +51,7 @@ class SegmentPageView: UIView {
     }
     
     //MARK: - 布局界面
-    private func makeUI(currentVc: UIViewController) {
+    fileprivate func makeUI(_ currentVc: UIViewController) {
         var titles: [String] = [String]()
         for vc in viewControllers {
             titles.append(vc.title!)
@@ -63,79 +63,79 @@ class SegmentPageView: UIView {
             self?.selectedIndex = index
         }
         addSubview(segmentBar)
-        let topConstraint = NSLayoutConstraint(item: segmentBar, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        topConstraint.active = true
+        let topConstraint = NSLayoutConstraint(item: segmentBar, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        topConstraint.isActive = true
         
-        let leftConstrain = NSLayoutConstraint(item: segmentBar, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        leftConstrain.active = true
+        let leftConstrain = NSLayoutConstraint(item: segmentBar, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        leftConstrain.isActive = true
         
-        let rightConstrain = NSLayoutConstraint(item: segmentBar, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
-        rightConstrain.active = true
+        let rightConstrain = NSLayoutConstraint(item: segmentBar, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+        rightConstrain.isActive = true
         
-        let heightConstrain = NSLayoutConstraint(item: segmentBar, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 40)
-        heightConstrain.active = true
+        let heightConstrain = NSLayoutConstraint(item: segmentBar, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
+        heightConstrain.isActive = true
         
         scrollView.delegate = self
         addSubview(scrollView)
         
-        let topConstraint2 = NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: segmentBar, attribute: .Bottom, multiplier: 1, constant: 0)
-        topConstraint2.active = true
+        let topConstraint2 = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: segmentBar, attribute: .bottom, multiplier: 1, constant: 0)
+        topConstraint2.isActive = true
         
-        let leftConstrain2 = NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        leftConstrain2.active = true
+        let leftConstrain2 = NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        leftConstrain2.isActive = true
         
-        let rightConstrain2 = NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
-        rightConstrain2.active = true
+        let rightConstrain2 = NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+        rightConstrain2.isActive = true
         
-        let buttomConstraint = NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
-        buttomConstraint.active = true
+        let buttomConstraint = NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        buttomConstraint.isActive = true
         
         selectedIndex = 0
     }
     
-    private func choiseView(index: NSInteger) {
+    fileprivate func choiseView(_ index: NSInteger) {
         let vc = viewControllers[index]
         let vcView = vc.view
         
         if scrollView.viewWithTag(6500 + index) != nil {
             return
         }
-        vcView.tag = 6500 + index
-        vcView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(vcView)
+        vcView?.tag = 6500 + index
+        vcView?.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(vcView!)
         
-        let topConstraint = NSLayoutConstraint(item: vcView, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 0)
-        topConstraint.active = true
+        let topConstraint = NSLayoutConstraint(item: vcView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: 0)
+        topConstraint.isActive = true
         
-        let leftConstrain = NSLayoutConstraint(item: vcView, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1, constant: scrollView.bounds.size.width * CGFloat(index))
-        leftConstrain.active = true
+        let leftConstrain = NSLayoutConstraint(item: vcView, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1, constant: scrollView.bounds.size.width * CGFloat(index))
+        leftConstrain.isActive = true
         
-        let widthConstrain = NSLayoutConstraint(item: vcView, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1, constant: 0)
-        widthConstrain.active = true
+        let widthConstrain = NSLayoutConstraint(item: vcView, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1, constant: 0)
+        widthConstrain.isActive = true
         
-        let heightConstrain = NSLayoutConstraint(item: vcView, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 0)
-        heightConstrain.active = true
+        let heightConstrain = NSLayoutConstraint(item: vcView, attribute: .height, relatedBy: .equal, toItem: scrollView, attribute: .height, multiplier: 1, constant: 0)
+        heightConstrain.isActive = true
     }
     
     ///切换tag
-    private func choiseTag(index: NSInteger) {
-        scrollView.setContentOffset(CGPointMake(scrollView.bounds.size.width * CGFloat(index), 0), animated: true)
+    fileprivate func choiseTag(_ index: NSInteger) {
+        scrollView.setContentOffset(CGPoint(x: scrollView.bounds.size.width * CGFloat(index), y: 0), animated: true)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width * CGFloat(viewControllers.count), scrollView.bounds.size.height)
+        scrollView.contentSize = CGSize(width: scrollView.bounds.size.width * CGFloat(viewControllers.count), height: scrollView.bounds.size.height)
     }
 }
 
 extension SegmentPageView: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
         segmentBar.selectedIndex = index
         selectedIndex = index
     }
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         segmentBar.updateLineViewPosition(scrollView.contentOffset.x, scrollViewWidth: scrollView.bounds.size.width)
     }
 }

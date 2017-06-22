@@ -12,26 +12,26 @@ private struct InnerConst {
     static let SegmentHeight: CGFloat = 50
 }
 class SegmentBar: UIView {
-    private var selectButton: UIButton?
-    private var buttonWidth: CGFloat = 0
-    private var lineLeftConstrain: NSLayoutConstraint!
-    private var lineView: UIView = {
+    fileprivate var selectButton: UIButton?
+    fileprivate var buttonWidth: CGFloat = 0
+    fileprivate var lineLeftConstrain: NSLayoutConstraint!
+    fileprivate var lineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.blueColor()
+        view.backgroundColor = UIColor.blue
         return view
     }()
     
     ///按钮的背景颜色
-    var buttonBgColor = UIColor.clearColor()
+    var buttonBgColor = UIColor.clear
     ///按钮正常状态的文字颜色
-    var buttonTitleNormalColor = UIColor.blackColor()
+    var buttonTitleNormalColor = UIColor.black
     ///按钮选中状态的文字颜色
-    var buttonTitleSelectedColor = UIColor.blueColor()
+    var buttonTitleSelectedColor = UIColor.blue
     ///按钮文字的字体
-    var buttonTitleFont = UIFont.systemFontOfSize(15)
+    var buttonTitleFont = UIFont.systemFont(ofSize: 15)
     ///线的颜色
-    var lineColor = UIColor.blueColor()
+    var lineColor = UIColor.blue
     ///线的高度
     var lineHeight: CGFloat = 1
     
@@ -41,7 +41,7 @@ class SegmentBar: UIView {
             setUI(titles)
         }
     }
-    var selectTagCallBack: ((index: NSInteger) -> Void)?
+    var selectTagCallBack: ((_ index: NSInteger) -> Void)?
     ///当前选择的Index
     var selectedIndex: NSInteger = 0 {
         didSet {
@@ -50,92 +50,92 @@ class SegmentBar: UIView {
     }
     
     //MARK: - 更新LineView的位置
-    func updateLineViewPosition(offset: CGFloat, scrollViewWidth: CGFloat) {
-        lineLeftConstrain.active = false
+    func updateLineViewPosition(_ offset: CGFloat, scrollViewWidth: CGFloat) {
+        lineLeftConstrain.isActive = false
         
         let constant = (offset / scrollViewWidth) * buttonWidth
-        lineLeftConstrain = NSLayoutConstraint(item: lineView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: constant)
-        lineLeftConstrain.active = true
+        lineLeftConstrain = NSLayoutConstraint(item: lineView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: constant)
+        lineLeftConstrain.isActive = true
         
         lineView.layoutIfNeeded()
     }
     
     //MARK: - 设置按钮相关的状态
-    private func setButtonStatus(oldIndex: NSInteger, newIndex: NSInteger) {
+    fileprivate func setButtonStatus(_ oldIndex: NSInteger, newIndex: NSInteger) {
         let oldButton = viewWithTag(6000 + oldIndex) as! UIButton
         let newButton = viewWithTag(6000 + newIndex) as! UIButton
-        oldButton.selected = false
-        newButton.selected = true
+        oldButton.isSelected = false
+        newButton.isSelected = true
     }
     
-    private func setUI(titles: [String]) {
+    fileprivate func setUI(_ titles: [String]) {
         var lastView: UIButton?
-        buttonWidth = UIScreen.mainScreen().bounds.size.width / CGFloat(titles.count)
+        buttonWidth = UIScreen.main.bounds.size.width / CGFloat(titles.count)
         for title in titles {
             let btn = createButton(title)
             btn.tag = 6000 + subviews.count
-            btn.addTarget(self, action: #selector(btnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            btn.addTarget(self, action: #selector(btnClick(_:)), for: UIControlEvents.touchUpInside)
             addSubview(btn)
             if subviews.count == 1 {
                 selectButton = btn
             }
             
             //setting btn top equal superview
-            let topConstraint = NSLayoutConstraint(item: btn, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-            topConstraint.active = true
+            let topConstraint = NSLayoutConstraint(item: btn, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+            topConstraint.isActive = true
             
             //setting left constraint
             let leftConstrain: NSLayoutConstraint
             if let view = lastView {
-                leftConstrain = NSLayoutConstraint(item: btn, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1, constant: 0)
+                leftConstrain = NSLayoutConstraint(item: btn, attribute: .left, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
             } else {
-                leftConstrain = NSLayoutConstraint(item: btn, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
+                leftConstrain = NSLayoutConstraint(item: btn, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
             }
-            leftConstrain.active = true
+            leftConstrain.isActive = true
             
             //setting width
-            let widthConstrain = NSLayoutConstraint(item: btn, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: buttonWidth)
-            widthConstrain.active = true
+            let widthConstrain = NSLayoutConstraint(item: btn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: buttonWidth)
+            widthConstrain.isActive = true
             
             //setting height
-            let heightConstraint = NSLayoutConstraint(item: btn, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 1, constant: 0)
-            heightConstraint.active = true
+            let heightConstraint = NSLayoutConstraint(item: btn, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0)
+            heightConstraint.isActive = true
             
             lastView = btn
         }
         
         lineView.backgroundColor = lineColor
         addSubview(lineView)
-        let buttomConstraint = NSLayoutConstraint(item: lineView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
-        buttomConstraint.active = true
+        let buttomConstraint = NSLayoutConstraint(item: lineView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
+        buttomConstraint.isActive = true
         
-        lineLeftConstrain = NSLayoutConstraint(item: lineView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        lineLeftConstrain.active = true
+        lineLeftConstrain = NSLayoutConstraint(item: lineView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        lineLeftConstrain.isActive = true
         
-        let widthConstrain = NSLayoutConstraint(item: lineView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: buttonWidth)
-        widthConstrain.active = true
+        let widthConstrain = NSLayoutConstraint(item: lineView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: buttonWidth)
+        widthConstrain.isActive = true
         
         //setting height
-        let heightConstraint = NSLayoutConstraint(item: lineView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: lineHeight)
-        heightConstraint.active = true
+        let heightConstraint = NSLayoutConstraint(item: lineView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: lineHeight)
+        heightConstraint.isActive = true
         
         selectedIndex = 0
     }
     
-    func btnClick(btn: UIButton) {
+    func btnClick(_ btn: UIButton) {
         selectedIndex = btn.tag - 6000
         
         if let callBack = selectTagCallBack {
-            callBack(index: selectedIndex)
+            callBack(selectedIndex)
         }
     }
     
     //MARK: - 通过title快速创建按钮
-    private func createButton(title: String) -> UIButton {
-        let btn = UIButton(type: UIButtonType.Custom)
-        btn.setTitle(title, forState: UIControlState.Normal)
-        btn.setTitleColor(buttonTitleNormalColor, forState: UIControlState.Normal)
-        btn.setTitleColor(buttonTitleSelectedColor, forState: UIControlState.Selected)
+    fileprivate func createButton(_ title: String) -> UIButton {
+        let btn = UIButton(type: UIButtonType.custom)
+        btn.setTitle(title, for: UIControlState())
+        btn.setTitleColor(buttonTitleNormalColor, for: UIControlState())
+        btn.setTitleColor(buttonTitleSelectedColor, for: UIControlState.selected)
         btn.titleLabel!.font = buttonTitleFont
         btn.backgroundColor = buttonBgColor
         btn.translatesAutoresizingMaskIntoConstraints = false

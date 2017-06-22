@@ -18,34 +18,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         
         title = "TableView"
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ViewController.CellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewController.CellIdentifier)
         
         dataArray.append("使用AutoLayout的方式")
         dataArray.append("使用Frame的方式")
         dataArray.append("自定义操作条")
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(ViewController.CellIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.CellIdentifier, for: indexPath)
         cell.textLabel?.text = dataArray[indexPath.row]
         return cell
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let vc: UIViewController
         switch indexPath.row {
         case 0:
-            vc = AutoLayoutViewController(nibName: "AutoLayoutViewController", bundle: NSBundle.mainBundle())
+            vc = AutoLayoutViewController(nibName: "AutoLayoutViewController", bundle: Bundle.main)
         case 1:
-            vc = FrameViewController(nibName: "FrameViewController", bundle: NSBundle.mainBundle())
+            vc = FrameViewController(nibName: "FrameViewController", bundle: Bundle.main)
         case 2:
-            vc = CustomBarViewController(nibName: "CustomBarViewController", bundle: NSBundle.mainBundle())
+            vc = CustomBarViewController(nibName: "CustomBarViewController", bundle: Bundle.main)
         default:
-            vc = AutoLayoutViewController(nibName: "AutoLayoutViewController", bundle: NSBundle.mainBundle())
+            vc = AutoLayoutViewController(nibName: "AutoLayoutViewController", bundle: Bundle.main)
         }
         
         self.navigationController?.pushViewController(vc, animated: true)
