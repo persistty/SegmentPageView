@@ -29,6 +29,7 @@
 		88F79DE51CE971200087BD4F /* CustomBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F79DE31CE971200087BD4F /* CustomBarViewController.swift */; };
 		88F79DE61CE971200087BD4F /* CustomBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE41CE971200087BD4F /* CustomBarViewController.xib */; };
 		88F79DE81CE9A2880087BD4F /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88F79DE71CE9A2880087BD4F /* gif.gif */; };
+		AA67B7D41EFBA88600CA0D7A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = AA67B7D31EFBA88600CA0D7A /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		88F79DE31CE971200087BD4F /* CustomBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarViewController.swift; sourceTree = "<group>"; };
 		88F79DE41CE971200087BD4F /* CustomBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBarViewController.xib; sourceTree = "<group>"; };
 		88F79DE71CE9A2880087BD4F /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
+		AA67B7D31EFBA88600CA0D7A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				88E59E261CE56F530095B1B0 /* Assets.xcassets */,
 				88E59E281CE56F530095B1B0 /* LaunchScreen.storyboard */,
 				88F79DE71CE9A2880087BD4F /* gif.gif */,
+				AA67B7D31EFBA88600CA0D7A /* README.md */,
 				88E59E2B1CE56F530095B1B0 /* Info.plist */,
 			);
 			path = SegmentPageView;
@@ -336,6 +339,7 @@
 				88E59E521CE573180095B1B0 /* SegmentPageView.swift in Sources */,
 				88F79DE51CE971200087BD4F /* CustomBarViewController.swift in Sources */,
 				88E59E5F1CE573200095B1B0 /* Test3ViewController.swift in Sources */,
+				AA67B7D41EFBA88600CA0D7A /* README.md in Sources */,
 				88F79DDD1CE965C50087BD4F /* AutoLayoutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
