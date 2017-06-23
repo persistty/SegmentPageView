@@ -8,9 +8,6 @@
 
 import UIKit
 
-private struct InnerConst {
-    static let SegmentHeight: CGFloat = 50
-}
 class SegmentBar: UIView {
     private var selectButton: UIButton?
     private var buttonWidth: CGFloat = 0
