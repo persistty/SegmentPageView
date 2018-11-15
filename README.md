@@ -18,7 +18,7 @@ SegmentPageView是一个swift开发类型网易新闻左右Tag切换的控件
 ![](https://github.com/persistty/SegmentPageView/blob/master/SegmentPageView/gif.gif)
 <br/>
 1.用AutoLayout的方式
-```
+```swift
 let test1 = Test1ViewController(nibName: "Test1ViewController", bundle: Bundle.main)
 test1.title = "新闻娱乐"
 
@@ -42,7 +42,7 @@ NSLayoutConstraint.activate(vConstraintArray)
 segmentView.viewControllers = [test1, test2, test3]
 ```
 2.用Frame的方式
-```
+```swift
 let segmentView = SegmentPageView(currentVc: self)
 segmentView.frame = CGRect(x: 0, y: 64, width: view.bounds.size.width, height: UIScreen.main.bounds.size.height - 64)
 view.addSubview(segmentView)
@@ -50,7 +50,7 @@ segmentView.viewControllers = [test1, test2, test3]
 ```
 
 3.自定义控件
-```
+```swift
 let segmentView = SegmentPageView(currentVc: self)
 segmentView.translatesAutoresizingMaskIntoConstraints = false
 segmentView.segmentBar.backgroundColor = UIColor.lightGray //操作条的背景颜色
